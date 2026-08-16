@@ -1,45 +1,51 @@
 # OS Lab Archive
 
-> A maintained record of operating-systems practical work: setup notes, terminal exercises, and results.
+> A maintained, Markdown-first record of Operating Systems laboratory work, commands, and reference material.
 
-This repository is the source of truth. Edit this README to update the website homepage and the repository overview at the same time.
+Use this page as the starting point for the archive. It is also the repository README, so any update here appears on both GitHub and the published site.
 
-## Start here
+## Lab notebook
 
-- [VirtualBox and CentOS 7 setup](03-08-2026/README.md)
-- [Linux commands and file management](10-08-2026/README.md)
+| Date | Practical | Focus |
+| --- | --- | --- |
+| [03 Aug 2026](03-08-2026/README.md) | [Install CentOS 7 in VirtualBox](03-08-2026/README.md) | Virtual machine setup, storage, and networking |
+| [10 Aug 2026](10-08-2026/README.md) | [Linux commands and file management](10-08-2026/README.md) | Users, files, permissions, `vim`, and `grep` |
 
-## Archive structure
+## Watch alongside the notes
 
-Each practical lives in its own dated folder. Keep the write-up in Markdown and place screenshots, PDFs, and other supporting files beside it.
+- [Install CentOS in VirtualBox](https://www.youtube.com/watch?v=-zXqZQp5L58)
+- [Linux file and folder system](https://www.youtube.com/watch?v=XHfQkmfyHk0)
+
+## How this archive is organised
 
 ```text
-OS-Lab-Archive/
-├── README.md                  # repository README and site homepage
+Operating-Systems-Programs/
+├── README.md                  # this page and the published homepage
 ├── 03-08-2026/
-│   └── README.md              # one practical
+│   └── README.md              # a practical write-up
 └── 10-08-2026/
-    └── README.md              # another practical
+    └── README.md              # a practical write-up
 ```
 
-## Write a practical
+Each practical keeps its Markdown write-up and any supporting screenshots, PDFs, or files in the same folder. The website turns that folder structure into the Explorer tree automatically.
 
-Use clear sections so each record is easy to scan:
+## Add a new practical
 
-1. Aim
-2. Requirements
-3. Procedure or commands
-4. Result
+1. Create a clearly named folder for the session.
+2. Add a `README.md` with the aim, requirements, procedure, commands, and result.
+3. Add a row to the **Lab notebook** table above.
+4. Push to `main` to publish the update.
 
-Use fenced code blocks for commands and output. The published site keeps every command line readable on desktop and mobile.
+Use fenced blocks for commands and output so they remain readable on every screen size:
 
 ```bash
-grep -R "TODO" .
-git status --short
+sudo dnf update
+pwd
+ls -la
 ```
 
-## Publish
+## Publishing and migration
 
-Push to `main`. GitHub Actions builds the static site and publishes the Markdown archive to GitHub Pages.
+GitHub Actions builds the static site from the Markdown files whenever `main` changes. The generated `site/` directory is disposable—edit the Markdown files instead.
 
-For a different project or an existing collection of solutions, see the [migration guide](MIGRATING.md).
+Moving another collection of solutions into this format? Read the [migration guide](MIGRATING.md).
