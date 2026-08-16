@@ -1,51 +1,54 @@
 # OS Lab Archive
 
-> A maintained, Markdown-first record of Operating Systems laboratory work, commands, and reference material.
+Just the collection of practical work for Operating Systems Lab and exercises.
 
-Use this page as the starting point for the archive. It is also the repository README, so any update here appears on both GitHub and the published site.
+## Overview
 
-## Lab notebook
 
-| Date | Practical | Focus |
-| --- | --- | --- |
-| [03 Aug 2026](03-08-2026/README.md) | [Install CentOS 7 in VirtualBox](03-08-2026/README.md) | Virtual machine setup, storage, and networking |
-| [10 Aug 2026](10-08-2026/README.md) | [Linux commands and file management](10-08-2026/README.md) | Users, files, permissions, `vim`, and `grep` |
 
-## Watch alongside the notes
+## Session Index
 
-- [Install CentOS in VirtualBox](https://www.youtube.com/watch?v=-zXqZQp5L58)
-- [Linux file and folder system](https://www.youtube.com/watch?v=XHfQkmfyHk0)
+| Date       | Topic        | Source                       | Docs                     |
+| ---------- | ------------ | ---------------------------- | ------------------------ |
+| 03-08-2026 | Experiment 1 | [Link](03-08-2026/README.md) | [Link](03-08-2026/docs/) |
 
-## How this archive is organised
+## Video Index
 
-```text
-Operating-Systems-Programs/
-├── README.md                  # this page and the published homepage
-├── 03-08-2026/
-│   └── README.md              # a practical write-up
-└── 10-08-2026/
-    └── README.md              # a practical write-up
-```
+- [Video 1 - Installtion](https://www.youtube.com/watch?v=-zXqZQp5L58)
+- [Video 2 - Linux File And Folder System](https://www.youtube.com/watch?v=XHfQkmfyHk0)
 
-Each practical keeps its Markdown write-up and any supporting screenshots, PDFs, or files in the same folder. The website turns that folder structure into the Explorer tree automatically.
+## PDF Library
 
-## Add a new practical
+### Notes
 
-1. Create a clearly named folder for the session.
-2. Add a `README.md` with the aim, requirements, procedure, commands, and result.
-3. Add a row to the **Lab notebook** table above.
-4. Push to `main` to publish the update.
+| PDF  | Preview | Source     |
+| ---- | ------- | ---------- |
+| Soon | Soon    | [Link](<>) |
 
-Use fenced blocks for commands and output so they remain readable on every screen size:
+### Questions
+
+| PDF  | Preview | Source     |
+| ---- | ------- | ---------- |
+| Soon | Soon    | [Link](<>) |
+
+## Writing A Practical
+
+Use clear sections so each record is easy to scan:
+
+1. Aim
+2. Requirements
+3. Procedure / commands / Code
+4. Result
+
+Use fenced code blocks for commands and output. The published site keeps every command line readable on desktop and mobile.
 
 ```bash
-sudo dnf update
-pwd
-ls -la
+grep -R "TODO" .
+git status --short
 ```
 
-## Publishing and migration
+## Publish
 
-GitHub Actions builds the static site from the Markdown files whenever `main` changes. The generated `site/` directory is disposable—edit the Markdown files instead.
+Push to `main`. GitHub Actions builds the static site and publishes the Markdown archive to GitHub Pages.
 
-Moving another collection of solutions into this format? Read the [migration guide](MIGRATING.md).
+For a different project or an existing collection of solutions, see the [migration guide](MIGRATING.md).
