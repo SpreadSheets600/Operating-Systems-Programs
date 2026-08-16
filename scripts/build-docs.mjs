@@ -205,8 +205,19 @@ function makeMarkdown(documentPaths) {
     rules.fence = (tokens, index) => {
         const language = tokens[index].info.trim().split(/\s+/)[0] || "text";
         const content = tokens[index].content.replace(/\r?\n$/, "");
-        const prefix = isShellLanguage(language) ? ' data-prefix="$"' : "";
-        return `<div class="mockup-code my-7 overflow-x-auto border border-base-300 text-sm shadow-none"><pre${prefix}><code class="language-${escapeHtml(language)}">${escapeHtml(content || " ")}</code></pre></div>`;
+        const isShell = isShellLanguage(language);
+        const lines = content ? content.split(/\r?\n/) : [""];
+        const renderedLines = lines
+            .map((line) => {
+                const code = `<code class="language-${escapeHtml(language)}">${escapeHtml(line || " ")}</code>`;
+                // The prompt is a real inline element before the highlighted
+                // code, so highlight.js can never push it onto its own line.
+                return isShell
+                    ? `<span class="term-prompt" aria-hidden="true">$</span>${code}`
+                    : code;
+            })
+            .join("\n");
+        return `<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">${escapeHtml(language)}</span></div><pre class="term-block-pre">${renderedLines}</pre></div>`;
     };
     rules.table_open = () =>
         '<div class="my-7 overflow-x-auto rounded-box border border-base-300"><table class="table table-zebra">';
