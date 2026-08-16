@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OS Lab Archive — a Markdown-powered archive.">
+  <title>Basic Linux Commands and File Management in CentOS 7 · OS Lab Archive</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("markdown-site-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}</script>
+  <link rel="stylesheet" href="../styles.css">
+  <link id="highlight-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" defer></script>
+  <script src="../site.js" defer></script>
+</head>
+<body class="min-h-screen bg-base-100 text-base-content">
+  <div class="drawer">
+    <input id="site-drawer" type="checkbox" class="drawer-toggle">
+    <div class="drawer-content flex min-h-screen flex-col">
+      <header class="navbar sticky top-0 z-30 min-h-15 border-b border-base-300 bg-base-100/95 px-4 backdrop-blur sm:px-8">
+        <div class="navbar-start gap-3"><label for="site-drawer" data-drawer-button aria-label="Toggle explorer" class="btn btn-ghost btn-sm gap-2 drawer-button"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="hidden sm:inline">Explorer</span></label><a href="../index.html" class="hidden max-w-64 truncate font-mono text-xs font-medium tracking-wide text-base-content/65 sm:block">OS Lab Archive</a></div>
+        <div class="navbar-end"><label class="swap swap-rotate btn btn-circle btn-ghost btn-sm" title="Toggle theme"><input data-theme-toggle type="checkbox" value="dark" class="theme-controller" aria-label="Toggle dark theme"><svg aria-hidden="true" class="swap-off size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg> <svg aria-hidden="true" class="swap-on size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.5 6.5 0 0 0 21 12.8Z"/></svg></label></div>
+      </header>
+      <main class="mx-auto w-full max-w-7xl grow px-4 py-9 sm:px-8 sm:py-14">
+    <div class="breadcrumbs mb-7 max-w-full text-xs text-base-content/55"><ul><li><a class="link link-hover" href="../index.html">Home</a></li><li><span class="font-mono">10-08-2026/README.md</span></li></ul></div>
+    <header class="mb-10 max-w-3xl border-b border-base-300 pb-8"><p class="mb-3 font-mono text-xs uppercase tracking-wider text-primary">Markdown document</p><h1 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Basic Linux Commands and File Management in CentOS 7</h1></header>
+    <div class="collapse collapse-arrow mb-8 border border-base-300 bg-base-100 xl:hidden"><input type="checkbox"><div class="collapse-title min-h-0 py-3 text-sm font-medium">On this page</div><div class="collapse-content"><nav class="p-0" aria-label="On this page"><p class="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-base-content/55">On this page</p><ol class="space-y-2 text-sm"><li class=""><a class="link link-hover text-base-content/70" href="#aim">Aim</a></li><li class=""><a class="link link-hover text-base-content/70" href="#requirements">Requirements</a></li><li class=""><a class="link link-hover text-base-content/70" href="#identification-of-root-and-non-root-users">Identification of Root and Non-Root Users</a></li><li class=""><a class="link link-hover text-base-content/70" href="#check-the-current-path">Check the Current Path</a></li><li class=""><a class="link link-hover text-base-content/70" href="#switch-users">Switch Users</a></li><li class=""><a class="link link-hover text-base-content/70" href="#create-a-file">Create a File</a></li><li class=""><a class="link link-hover text-base-content/70" href="#display-file-contents">Display File Contents</a></li><li class=""><a class="link link-hover text-base-content/70" href="#create-and-edit-a-file-using-vim">Create and Edit a File Using Vim</a></li><li class=""><a class="link link-hover text-base-content/70" href="#check-file-ownership-and-permissions">Check File Ownership and Permissions</a></li><li class="ps-3"><a class="link link-hover text-base-content/70" href="#file-permissions">File Permissions</a></li><li class=""><a class="link link-hover text-base-content/70" href="#check-directory-details">Check Directory Details</a></li><li class=""><a class="link link-hover text-base-content/70" href="#use-of-the-grep-command">Use of the grep Command</a></li><li class=""><a class="link link-hover text-base-content/70" href="#result">Result</a></li></ol></nav></div></div>
+    <div class="grid items-start gap-10 xl:grid-cols-[minmax(0,48rem)_15rem] xl:justify-between"><article class="min-w-0 max-w-3xl"><h2 id="aim" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Aim</h2>
+<p class="my-5 leading-8 text-base-content/80">To study basic Linux commands for identifying users, creating and editing files, switching users, checking paths, file ownership, permissions, and searching text using <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">grep</code>.</p>
+<h2 id="requirements" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Requirements</h2>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1">CentOS 7 environment</li>
+<li class="ps-1">Terminal access with root and non-root (<code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">bit</code>) users</li>
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">vim</code> editor</li>
+</ul>
+<h2 id="identification-of-root-and-non-root-users" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Identification of Root and Non-Root Users</h2>
+<p class="my-5 leading-8 text-base-content/80">The terminal prompt indicates the type of user currently logged in:</p>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1"><strong>Root user:</strong> <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">[root@lab1-m13 ~]#</code>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">#</code> indicates that the current user is root.</li>
+</ul>
+</li>
+<li class="ps-1"><strong>Non-root user:</strong> <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">[bit@lab1-m13 ~]$</code>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">$</code> indicates that the current user is a non-root user.</li>
+</ul>
+</li>
+</ul>
+<h2 id="check-the-current-path" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Check the Current Path</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">pwd</code> command displays the current working directory:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">pwd</code></pre></div><p class="my-5 leading-8 text-base-content/80">The home directory of the root user is <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">/root</code>. The home directory of a non-root user such as <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">bit</code> is <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">/home/bit</code>.</p>
+<h2 id="switch-users" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Switch Users</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">su</code> command switches from one user to another:</p>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">su -</code> form switches the user and starts a login shell with the target user’s environment and home directory:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">su - bit</code>
+<span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">su -</code></pre></div><p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">su</code> command without <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">-</code> switches the effective user without starting a full login shell.</p>
+<h2 id="create-a-file" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Create a File</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">touch</code> command creates an empty file:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">touch test.txt</code></pre></div><p class="my-5 leading-8 text-base-content/80">Check whether the file was created:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">ls -l test.txt</code></pre></div><h2 id="display-file-contents" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Display File Contents</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">cat</code> command displays the contents of a file:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">cat test.txt</code>
+<span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">cat /root/test.txt</code></pre></div><h2 id="create-and-edit-a-file-using-vim" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Create and Edit a File Using Vim</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">vim</code> editor can be used to create and edit a file:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">vim test.txt</code></pre></div><ol class="my-5 list-decimal space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1">Enter insert mode and write the content, for example: <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">This file is created by Debojit.</code></li>
+<li class="ps-1">Press <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">Esc</code> to leave insert mode.</li>
+<li class="ps-1">Press <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">Shift + :</code> to open the command line.</li>
+<li class="ps-1">Type <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">wq</code> and press <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">Enter</code>.</li>
+</ol>
+<p class="my-5 leading-8 text-base-content/80"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">wq</code> means <strong>write and quit</strong>: save the file and exit Vim.</p>
+<h2 id="check-file-ownership-and-permissions" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Check File Ownership and Permissions</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">ls -l</code> command displays the ownership and permissions of a file:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">ls -l test.txt</code></pre></div><p class="my-5 leading-8 text-base-content/80">Example output:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">text</span></div><pre class="term-block-pre"><code class="language-text">-rw-r--r-- 1 root root 0 Aug 10 11:01 test.txt</code></pre></div><p class="my-5 leading-8 text-base-content/80">In this output:</p>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1">The first <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">root</code> is the file owner.</li>
+<li class="ps-1">The second <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">root</code> is the group owner.</li>
+</ul>
+<h3 id="file-permissions" class="mt-9 scroll-mt-24 text-xl font-semibold tracking-tight">File Permissions</h3>
+<p class="my-5 leading-8 text-base-content/80">A typical permission entry is:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">text</span></div><pre class="term-block-pre"><code class="language-text">-rw-r--r--</code></pre></div><ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1">The first character represents the file type:
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">-</code> — regular file</li>
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">d</code> — directory</li>
+</ul>
+</li>
+<li class="ps-1">The remaining nine characters represent permissions for:
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1">User</li>
+<li class="ps-1">Group</li>
+<li class="ps-1">Others</li>
+</ul>
+</li>
+</ul>
+<p class="my-5 leading-8 text-base-content/80">Permission values are:</p>
+<div class="my-7 overflow-x-auto rounded-box border border-base-300"><table class="table table-zebra"><thead>
+<tr>
+<th class="whitespace-nowrap font-semibold">Permission</th>
+<th class="whitespace-nowrap font-semibold">Meaning</th>
+<th class="whitespace-nowrap font-semibold">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">r</code></td>
+<td>Read</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">w</code></td>
+<td>Write</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">x</code></td>
+<td>Execute</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div><p class="my-5 leading-8 text-base-content/80">Therefore, <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">rwx = 4 + 2 + 1 = 7</code>.</p>
+<p class="my-5 leading-8 text-base-content/80">Full permission for a directory is <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">777</code>:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">text</span></div><pre class="term-block-pre"><code class="language-text">7 | 7 | 7</code>
+<code class="language-text">User | Group | Others</code></pre></div><p class="my-5 leading-8 text-base-content/80">Each category has read, write, and execute permission. For a file, full permission is <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">666</code>.</p>
+<h2 id="check-directory-details" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Check Directory Details</h2>
+<p class="my-5 leading-8 text-base-content/80">To display the details of the <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">/root</code> directory itself, use:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">ls -ld /root</code></pre></div><ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">ls</code> — list</li>
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">-l</code> — long format</li>
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">-d</code> — display the directory itself</li>
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">/root</code> — target directory</li>
+</ul>
+<h2 id="use-of-the-grep-command" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Use of the <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">grep</code> Command</h2>
+<p class="my-5 leading-8 text-base-content/80">The <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">grep</code> command searches for a particular word or pattern in text or command output:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">ls -l / | grep root</code></pre></div><p class="my-5 leading-8 text-base-content/80">Here:</p>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">ls -l /</code> lists the contents of the root directory <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">/</code>.</li>
+<li class="ps-1">The pipe symbol (<code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">|</code>) passes the output of the first command to <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">grep</code>.</li>
+<li class="ps-1"><code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">grep root</code> displays only the lines containing the word <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">root</code>.</li>
+</ul>
+<p class="my-5 leading-8 text-base-content/80">Therefore, <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">ls -l / | grep root</code> lists the contents of <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">/</code> and displays only the lines containing <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">root</code>.</p>
+<h2 id="result" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Result</h2>
+<p class="my-5 leading-8 text-base-content/80">The basic Linux commands for user identification, user switching, file creation, file editing, path checking, file ownership, permissions, and text searching were studied and executed successfully.</p>
+</article><aside class="hidden xl:block xl:sticky xl:top-24 xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto"><nav class="rounded-box border border-base-300 bg-base-100 p-4" aria-label="On this page"><p class="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-base-content/55">On this page</p><ol class="space-y-2 text-sm"><li class=""><a class="link link-hover text-base-content/70" href="#aim">Aim</a></li><li class=""><a class="link link-hover text-base-content/70" href="#requirements">Requirements</a></li><li class=""><a class="link link-hover text-base-content/70" href="#identification-of-root-and-non-root-users">Identification of Root and Non-Root Users</a></li><li class=""><a class="link link-hover text-base-content/70" href="#check-the-current-path">Check the Current Path</a></li><li class=""><a class="link link-hover text-base-content/70" href="#switch-users">Switch Users</a></li><li class=""><a class="link link-hover text-base-content/70" href="#create-a-file">Create a File</a></li><li class=""><a class="link link-hover text-base-content/70" href="#display-file-contents">Display File Contents</a></li><li class=""><a class="link link-hover text-base-content/70" href="#create-and-edit-a-file-using-vim">Create and Edit a File Using Vim</a></li><li class=""><a class="link link-hover text-base-content/70" href="#check-file-ownership-and-permissions">Check File Ownership and Permissions</a></li><li class="ps-3"><a class="link link-hover text-base-content/70" href="#file-permissions">File Permissions</a></li><li class=""><a class="link link-hover text-base-content/70" href="#check-directory-details">Check Directory Details</a></li><li class=""><a class="link link-hover text-base-content/70" href="#use-of-the-grep-command">Use of the grep Command</a></li><li class=""><a class="link link-hover text-base-content/70" href="#result">Result</a></li></ol></nav></aside></div>
+  </main>
+    </div>
+    <div class="drawer-side z-40"><label for="site-drawer" aria-label="Close explorer" class="drawer-overlay"></label><aside class="min-h-full w-72 border-e border-base-300 bg-base-100 p-4 sm:p-5">
+    <a class="mb-6 flex items-center gap-3 px-2" href="../index.html">
+      <span class="flex size-9 items-center justify-center rounded-field bg-primary text-primary-content"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M3 3h18v4H3zM9 12h6"/></svg></span>
+      <span class="min-w-0"><span class="block truncate text-sm font-semibold">OS Lab Archive</span><span class="block font-mono text-[11px] text-base-content/55">Markdown archive</span></span>
+    </a>
+    <div class="mb-2 px-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-base-content/50">Explorer</div>
+    <ul class="menu menu-sm w-full gap-1"><li><details><summary><svg aria-hidden="true" class="size-4 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg><span class="truncate">03-08-2026</span></summary><ul><li><a class="" href="../03-08-2026/README.html" title="Installation Of CentOS 7 In VirtualBox"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">README.md</span></a></li></ul></details></li><li><details open><summary><svg aria-hidden="true" class="size-4 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg><span class="truncate">10-08-2026</span></summary><ul><li><a class="menu-active" href="README.html" title="Basic Linux Commands and File Management in CentOS 7"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">README.md</span></a></li></ul></details></li><li><a class="" href="../index.html" title="OS Lab Archive"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">README.md</span></a></li><li><a class="" href="../MIGRATING.html" title="Migrating Or Creating New Content"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">MIGRATING.md</span></a></li></ul>
+  </aside></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OS Lab Archive — a Markdown-powered archive.">
+  <title>Migrating Or Creating New Content · OS Lab Archive</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("markdown-site-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css">
+  <link id="highlight-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body class="min-h-screen bg-base-100 text-base-content">
+  <div class="drawer">
+    <input id="site-drawer" type="checkbox" class="drawer-toggle">
+    <div class="drawer-content flex min-h-screen flex-col">
+      <header class="navbar sticky top-0 z-30 min-h-15 border-b border-base-300 bg-base-100/95 px-4 backdrop-blur sm:px-8">
+        <div class="navbar-start gap-3"><label for="site-drawer" data-drawer-button aria-label="Toggle explorer" class="btn btn-ghost btn-sm gap-2 drawer-button"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="hidden sm:inline">Explorer</span></label><a href="index.html" class="hidden max-w-64 truncate font-mono text-xs font-medium tracking-wide text-base-content/65 sm:block">OS Lab Archive</a></div>
+        <div class="navbar-end"><label class="swap swap-rotate btn btn-circle btn-ghost btn-sm" title="Toggle theme"><input data-theme-toggle type="checkbox" value="dark" class="theme-controller" aria-label="Toggle dark theme"><svg aria-hidden="true" class="swap-off size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg> <svg aria-hidden="true" class="swap-on size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.5 6.5 0 0 0 21 12.8Z"/></svg></label></div>
+      </header>
+      <main class="mx-auto w-full max-w-7xl grow px-4 py-9 sm:px-8 sm:py-14">
+    <div class="breadcrumbs mb-7 max-w-full text-xs text-base-content/55"><ul><li><a class="link link-hover" href="index.html">Home</a></li><li><span class="font-mono">MIGRATING.md</span></li></ul></div>
+    <header class="mb-10 max-w-3xl border-b border-base-300 pb-8"><p class="mb-3 font-mono text-xs uppercase tracking-wider text-primary">Markdown document</p><h1 class="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Migrating Or Creating New Content</h1></header>
+    <div class="collapse collapse-arrow mb-8 border border-base-300 bg-base-100 xl:hidden"><input type="checkbox"><div class="collapse-title min-h-0 py-3 text-sm font-medium">On this page</div><div class="collapse-content"><nav class="p-0" aria-label="On this page"><p class="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-base-content/55">On this page</p><ol class="space-y-2 text-sm"><li class=""><a class="link link-hover text-base-content/70" href="#1-add-or-update-the-root-readme">1. Add or update the root README</a></li><li class=""><a class="link link-hover text-base-content/70" href="#2-keep-your-existing-folders">2. Keep your existing folders</a></li><li class=""><a class="link link-hover text-base-content/70" href="#3-use-normal-markdown-links">3. Use normal Markdown links</a></li><li class=""><a class="link link-hover text-base-content/70" href="#4-format-commands-with-fenced-blocks">4. Format commands with fenced blocks</a></li><li class=""><a class="link link-hover text-base-content/70" href="#5-build-locally">5. Build locally</a></li><li class=""><a class="link link-hover text-base-content/70" href="#notes">Notes</a></li></ol></nav></div></div>
+    <div class="grid items-start gap-10 xl:grid-cols-[minmax(0,48rem)_15rem] xl:justify-between"><article class="min-w-0 max-w-3xl"><p class="my-5 leading-8 text-base-content/80">The site builder is intentionally content-agnostic: it turns a folder of Markdown documents into a responsive daisyUI website. The root <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">README.md</code> is special—it is both the repository README and the generated homepage.</p>
+<h2 id="1-add-or-update-the-root-readme" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">1. Add or update the root README</h2>
+<p class="my-5 leading-8 text-base-content/80">Put a <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">README.md</code> in the repository root. Give it one <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">#</code> heading and add the overview, links, and navigation you want visitors to see. Do not edit <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">site/index.html</code>; it is generated from this file.</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">md</span></div><pre class="term-block-pre"><code class="language-md"># Algorithms Notes</code>
+<code class="language-md"> </code>
+<code class="language-md">A working archive of examples and explanations.</code>
+<code class="language-md"> </code>
+<code class="language-md">## Topics</code>
+<code class="language-md"> </code>
+<code class="language-md">- [Sorting](notes/sorting.md)</code>
+<code class="language-md">- [Graphs](notes/graphs.md)</code></pre></div><h2 id="2-keep-your-existing-folders" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">2. Keep your existing folders</h2>
+<p class="my-5 leading-8 text-base-content/80">No special date format is required. Store Markdown files wherever the structure makes sense for the project.</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">text</span></div><pre class="term-block-pre"><code class="language-text">project/</code>
+<code class="language-text">├── README.md</code>
+<code class="language-text">├── notes/</code>
+<code class="language-text">│   ├── sorting.md</code>
+<code class="language-text">│   └── graphs.md</code>
+<code class="language-text">└── solutions/</code>
+<code class="language-text">    └── exercise-01.md</code></pre></div><p class="my-5 leading-8 text-base-content/80">The sidebar becomes a collapsible folder tree automatically. Every <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">.md</code> file gets a matching <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">.html</code> page. Files such as images, PDFs, and archives are copied to the generated site and appear in the same tree.</p>
+<h2 id="3-use-normal-markdown-links" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">3. Use normal Markdown links</h2>
+<p class="my-5 leading-8 text-base-content/80">Keep links pointing to Markdown source files:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">md</span></div><pre class="term-block-pre"><code class="language-md">[Read the sorting notes](notes/sorting.md)</code></pre></div><p class="my-5 leading-8 text-base-content/80">During the build, local links to known Markdown documents are rewritten to their generated HTML pages. Anchors continue to work:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">md</span></div><pre class="term-block-pre"><code class="language-md">[Jump to complexity](notes/sorting.md#complexity)</code></pre></div><h2 id="4-format-commands-with-fenced-blocks" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">4. Format commands with fenced blocks</h2>
+<p class="my-5 leading-8 text-base-content/80">Use a language after the opening fence when possible. Shell-like blocks get a terminal prompt for each line; text and program output stay unprefixed.</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">md</span></div><pre class="term-block-pre"><code class="language-md">```bash</code>
+<code class="language-md">npm run build:site</code>
+<code class="language-md">npm run preview</code>
+<code class="language-md">```</code>
+<code class="language-md"> </code>
+<code class="language-md">```text</code>
+<code class="language-md">Build complete</code>
+<code class="language-md">```</code></pre></div><h2 id="5-build-locally" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">5. Build locally</h2>
+<p class="my-5 leading-8 text-base-content/80">Install dependencies once, then generate the site:</p>
+<div class="term-block my-7"><div class="term-block-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-lang">bash</span></div><pre class="term-block-pre"><span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">npm install</code>
+<span class="term-prompt" aria-hidden="true">$</span><code class="language-bash">npm run build:site</code></pre></div><p class="my-5 leading-8 text-base-content/80">Publish the <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">site/</code> directory with any static host, or keep the included GitHub Actions workflow to deploy on pushes to <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">main</code>.</p>
+<h2 id="notes" class="mt-12 scroll-mt-24 border-b border-base-300 pb-3 text-2xl font-semibold tracking-tight sm:text-3xl">Notes</h2>
+<ul class="my-5 list-disc space-y-2 ps-6 leading-7 text-base-content/80">
+<li class="ps-1">The generated <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">site/</code> directory is disposable; change the Markdown files and <code class="rounded-field bg-base-200 px-1.5 py-0.5 font-mono text-[0.85em] text-base-content">scripts/</code> instead.</li>
+<li class="ps-1">Raw HTML in Markdown is displayed as text for safer publishing.</li>
+<li class="ps-1">Tables, headings, images, lists, blockquotes, inline code, fenced code, and local Markdown links are rendered with daisyUI styling.</li>
+<li class="ps-1">The visual system is generic. Rename the root README heading to rename the site.</li>
+</ul>
+</article><aside class="hidden xl:block xl:sticky xl:top-24 xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto"><nav class="rounded-box border border-base-300 bg-base-100 p-4" aria-label="On this page"><p class="mb-3 font-mono text-[11px] font-semibold uppercase tracking-wider text-base-content/55">On this page</p><ol class="space-y-2 text-sm"><li class=""><a class="link link-hover text-base-content/70" href="#1-add-or-update-the-root-readme">1. Add or update the root README</a></li><li class=""><a class="link link-hover text-base-content/70" href="#2-keep-your-existing-folders">2. Keep your existing folders</a></li><li class=""><a class="link link-hover text-base-content/70" href="#3-use-normal-markdown-links">3. Use normal Markdown links</a></li><li class=""><a class="link link-hover text-base-content/70" href="#4-format-commands-with-fenced-blocks">4. Format commands with fenced blocks</a></li><li class=""><a class="link link-hover text-base-content/70" href="#5-build-locally">5. Build locally</a></li><li class=""><a class="link link-hover text-base-content/70" href="#notes">Notes</a></li></ol></nav></aside></div>
+  </main>
+    </div>
+    <div class="drawer-side z-40"><label for="site-drawer" aria-label="Close explorer" class="drawer-overlay"></label><aside class="min-h-full w-72 border-e border-base-300 bg-base-100 p-4 sm:p-5">
+    <a class="mb-6 flex items-center gap-3 px-2" href="index.html">
+      <span class="flex size-9 items-center justify-center rounded-field bg-primary text-primary-content"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M3 3h18v4H3zM9 12h6"/></svg></span>
+      <span class="min-w-0"><span class="block truncate text-sm font-semibold">OS Lab Archive</span><span class="block font-mono text-[11px] text-base-content/55">Markdown archive</span></span>
+    </a>
+    <div class="mb-2 px-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-base-content/50">Explorer</div>
+    <ul class="menu menu-sm w-full gap-1"><li><details><summary><svg aria-hidden="true" class="size-4 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg><span class="truncate">03-08-2026</span></summary><ul><li><a class="" href="03-08-2026/README.html" title="Installation Of CentOS 7 In VirtualBox"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">README.md</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="size-4 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h4"/></svg><span class="truncate">10-08-2026</span></summary><ul><li><a class="" href="10-08-2026/README.html" title="Basic Linux Commands and File Management in CentOS 7"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">README.md</span></a></li></ul></details></li><li><a class="" href="index.html" title="OS Lab Archive"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">README.md</span></a></li><li><a class="menu-active" href="MIGRATING.html" title="Migrating Or Creating New Content"><svg aria-hidden="true" class="size-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg><span class="truncate">MIGRATING.md</span></a></li></ul>
+  </aside></div>
+  </div>
+</body>
+</html>
