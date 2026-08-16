@@ -1,4 +1,4 @@
-# Operating System Lab - August 03, 2026
+# Installation Of CentOS 7 In VirtualBox
 
 ## Aim
 
