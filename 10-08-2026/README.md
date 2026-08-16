@@ -1,9 +1,5 @@
 # Basic Linux Commands and File Management in CentOS 7
 
-## Date
-
-10 August 2026
-
 ## Aim
 
 To study basic Linux commands for identifying users, creating and editing files, switching users, checking paths, file ownership, permissions, and searching text using `grep`.
