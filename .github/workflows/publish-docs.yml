@@ -28,8 +28,8 @@ jobs:
       - name: Install renderer
         run: npm ci
 
-      - name: Render Markdown to HTML
-        run: npm run build:docs
+      - name: Build the responsive site
+        run: npm run build:site
 
       - name: Publish the generated site branch
         uses: peaceiris/actions-gh-pages@v4
