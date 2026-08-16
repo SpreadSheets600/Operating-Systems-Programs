@@ -1,5 +1,6 @@
 {
-  "name": "operating-systems-programs-docs",
+  "name": "markdown-archive-site",
+  "description": "A daisyUI-powered static site generator for Markdown archives.",
   "private": true,
   "type": "module",
   "scripts": {
