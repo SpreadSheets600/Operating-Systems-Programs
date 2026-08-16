@@ -1,4 +1,4 @@
-# Migrating an existing Markdown collection
+# Migrating Or Creating New Content
 
 The site builder is intentionally content-agnostic: it turns a folder of Markdown documents into a responsive daisyUI website. The root `README.md` is special—it is both the repository README and the generated homepage.
 

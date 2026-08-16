@@ -1,10 +1,8 @@
 # OS Lab Archive
 
-Just the collection of practical work for Operating Systems Lab and exercises.
+A maintained, Markdown-first record of Operating Systems laboratory work, commands, and reference material. Just the collection of practical work for Operating Systems Lab and exercises. Use this page as the starting point for the archive. It is also the repository README, so any update here appears on both GitHub and the published site.
 
 ## Overview
-
-
 
 ## Session Index
 
