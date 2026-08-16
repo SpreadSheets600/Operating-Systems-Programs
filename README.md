@@ -19,15 +19,15 @@ A maintained, Markdown-first record of Operating Systems laboratory work, comman
 
 ### Notes
 
-| PDF  | Preview | Source     |
-| ---- | ------- | ---------- |
-| Soon | Soon    | [Link](<>) |
+| PDF  | Preview | Source                                                                |
+| ---- | ------- | --------------------------------------------------------------------- |
+| Soon | Soon    | [Link](https://github.com/SpreadSheets600/Operating-Systems-Programs) |
 
 ### Questions
 
-| PDF  | Preview | Source     |
-| ---- | ------- | ---------- |
-| Soon | Soon    | [Link](<>) |
+| PDF  | Preview | Source                                                                |
+| ---- | ------- | --------------------------------------------------------------------- |
+| Soon | Soon    | [Link](https://github.com/SpreadSheets600/Operating-Systems-Programs) |
 
 ## Writing A Practical
 
@@ -48,5 +48,4 @@ git status --short
 ## Publish
 
 Push to `main`. GitHub Actions builds the static site and publishes the Markdown archive to GitHub Pages.
-
 For a different project or an existing collection of solutions, see the [migration guide](MIGRATING.md).
