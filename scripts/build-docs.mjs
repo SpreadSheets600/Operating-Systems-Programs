@@ -205,16 +205,8 @@ function makeMarkdown(documentPaths) {
     rules.fence = (tokens, index) => {
         const language = tokens[index].info.trim().split(/\s+/)[0] || "text";
         const content = tokens[index].content.replace(/\r?\n$/, "");
-        const renderedCode = isShellLanguage(language)
-            ? content
-                  .split(/\r?\n/)
-                  .map(
-                      (line) =>
-                          `<pre data-prefix="$"><code class="language-${escapeHtml(language)}">${escapeHtml(line || " ")}</code></pre>`,
-                  )
-                  .join("")
-            : `<pre><code class="language-${escapeHtml(language)}">${escapeHtml(content || " ")}</code></pre>`;
-        return `<div class="mockup-code my-7 overflow-x-auto border border-base-300 text-sm shadow-none">${renderedCode}</div>`;
+        const prefix = isShellLanguage(language) ? ' data-prefix="$"' : "";
+        return `<div class="mockup-code my-7 overflow-x-auto border border-base-300 text-sm shadow-none"><pre${prefix}><code class="language-${escapeHtml(language)}">${escapeHtml(content || " ")}</code></pre></div>`;
     };
     rules.table_open = () =>
         '<div class="my-7 overflow-x-auto rounded-box border border-base-300"><table class="table table-zebra">';
