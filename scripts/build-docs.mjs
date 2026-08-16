@@ -186,7 +186,7 @@ for (const document of documents) {
   </section>` : "";
   const body = `<main class="mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 sm:py-12 lg:py-16"><article class="mx-auto max-w-4xl">
     <div class="mb-10 border-b border-base-300 pb-8"><div class="mb-3 font-mono text-xs font-bold uppercase tracking-[.18em] text-primary">${escapeHtml(document.sourcePath)}</div><h1 class="font-display text-4xl font-extrabold leading-[1.05] tracking-[-.045em] sm:text-6xl">${escapeHtml(document.title)}</h1></div>
-    <div class="prose max-w-none prose-headings:font-display prose-headings:tracking-tight prose-a:text-primary prose-code:rounded prose-code:bg-base-200 prose-code:px-1 prose-code:py-0.5 prose-pre:bg-neutral prose-img:rounded-box">${document.rendered}</div>
+    <div class="prose max-w-none">${document.rendered}</div>
     ${attachments}
   </article></main>`;
   await fs.mkdir(path.dirname(path.join(outputDir, document.outputPath)), { recursive: true });
