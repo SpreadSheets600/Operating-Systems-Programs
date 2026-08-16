@@ -6,9 +6,10 @@ A maintained, Markdown-first record of Operating Systems laboratory work, comman
 
 ## Session Index
 
-| Date       | Topic        | Source                       | Docs                     |
-| ---------- | ------------ | ---------------------------- | ------------------------ |
-| 03-08-2026 | Experiment 1 | [Link](03-08-2026/README.md) | [Link](03-08-2026/docs/) |
+| Date       | Topic        | Source                       |
+| ---------- | ------------ | ---------------------------- |
+| 03-08-2026 | Experiment 1 | [Link](03-08-2026/README.md) |
+| 10-08-2026 | Experiment 2 | [Link](10-08-2026/README.md) |
 
 ## Video Index
 
