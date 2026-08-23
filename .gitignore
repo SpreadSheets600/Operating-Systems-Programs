@@ -1,2 +1,7 @@
+# Local clone of the site engine (markdown-archive-engine)
+.engine/
+
+# Build output
+dist/
 node_modules/
-site/
+.astro/
