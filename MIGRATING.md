@@ -49,7 +49,7 @@ During the build, local links between Markdown documents are rewritten to their 
 
 ## 4. Format commands with fenced blocks
 
-Use a language after the opening fence when possible. Blocks are rendered as terminal panes with syntax highlighting (Shiki) and a copy button; shell-like blocks get a `$` prompt per line.
+Use a language after the opening fence when possible. Blocks are rendered as panes with dual-theme syntax highlighting (Shiki github-light/github-dark), a hover copy button, and no line wrapping — every command stays on its own row.
 
 ````md
 ```bash
@@ -82,5 +82,5 @@ workflow and the site builds on every push to `main`.
 - The generated `dist/` directory is disposable; only ever edit Markdown in this repository.
 - Tables, headings, images, lists, blockquotes, inline code, fenced code, and local Markdown links are styled by the theme in `src/styles/global.css`.
 - New file types get sensible preview cards out of the box; extend the registry in `src/components/AssetGrid.astro` to customize them.
-- Search is powered by Pagefind and indexes the built output — no configuration needed.
+- Search is powered by Pagefind and indexes the built output — no configuration needed. Open it with ⌘K/Ctrl+K or the header buttons.
 - The visual system is generic. Rename the root README heading to rename the site.

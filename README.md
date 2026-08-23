@@ -61,4 +61,10 @@ git clone https://github.com/SpreadSheets600/markdown-archive-engine .engine
 cd .engine && npm install && npm run dev
 ```
 
+The engine currently runs from `main` in CI (tagged releases available,
+e.g. `v1`). Its documentation lives in the engine repo:
+[README](https://github.com/SpreadSheets600/markdown-archive-engine#readme)
+and [AGENTS.md](https://github.com/SpreadSheets600/markdown-archive-engine/blob/main/AGENTS.md),
+a full playbook for AI coding agents working on this stack.
+
 For a different project or an existing collection of solutions, see the [migration guide](MIGRATING.md).
