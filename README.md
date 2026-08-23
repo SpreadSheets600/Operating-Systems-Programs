@@ -10,6 +10,7 @@ A maintained, Markdown-first record of Operating Systems laboratory work, comman
 | ---------- | ------------ | ---------------------------- |
 | 03-08-2026 | Experiment 1 | [Link](03-08-2026/README.md) |
 | 10-08-2026 | Experiment 2 | [Link](10-08-2026/README.md) |
+| 17-08-2026 | Experiment 3 | [Link](17-08-2026/README.md) |
 
 ## Video Index
 
