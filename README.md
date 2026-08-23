@@ -48,5 +48,17 @@ git status --short
 
 ## Publish
 
-Push to `main`. GitHub Actions builds the static site and publishes the Markdown archive to GitHub Pages.
+This repository holds **content only** (Markdown + assets). The site
+generator lives separately in
+[markdown-archive-engine](https://github.com/SpreadSheets600/markdown-archive-engine);
+GitHub Actions checks it out on every push to `main`, builds the site,
+and publishes it to GitHub Pages.
+
+To preview locally, clone the engine next to your content:
+
+```bash
+git clone https://github.com/SpreadSheets600/markdown-archive-engine .engine
+cd .engine && npm install && npm run dev
+```
+
 For a different project or an existing collection of solutions, see the [migration guide](MIGRATING.md).
