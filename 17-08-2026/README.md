@@ -2,8 +2,6 @@
 
 ## Program 1: Print "Hello World"
 
-### Aim
-
 To write a C program that prints `Hello World` on the terminal.
 
 ```c
@@ -15,15 +13,13 @@ int main() {
 }
 ```
 
-Output:
+### Output
 
 ```text
 Hello World
 ```
 
 ## Program 2: Print "Hello World" with fork()
-
-### Aim
 
 To write a C program that prints `Hello World` using `fork()` so that both the parent and the child process print the line.
 
@@ -38,7 +34,7 @@ int main() {
 }
 ```
 
-Output:
+### Output
 
 ```text
 Hello World
@@ -46,8 +42,6 @@ Hello World
 ```
 
 ## Program 3: Display PID and PPID of Parent and Child
-
-### Aim
 
 To write a C program using `fork()` and `<sys/types.h>` that creates a child process and displays the PID and PPID of both the parent and the child processes.
 
@@ -74,7 +68,7 @@ int main() {
 }
 ```
 
-Output:
+### Output
 
 ```text
 Parent process: PID = 3421, PPID = 2890
@@ -82,8 +76,6 @@ Child process : PID = 3422, PPID = 3421
 ```
 
 ## Program 4: Parent and Child Behavior with sleep()
-
-### Aim
 
 To write a C program using `fork()` and `<sys/types.h>` that adds `sleep()` in the child process and observe the parent and child process behavior during execution.
 
@@ -111,7 +103,7 @@ int main() {
 }
 ```
 
-Output:
+### Output
 
 ```text
 Parent process: PID = 3510, PPID = 2890
